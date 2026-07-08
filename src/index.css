@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-alpine-black: #0d0d0f;
+  --color-alpine-charcoal: #232329;
+  --color-alpine-cream: #faf6ee;
+  --color-alpine-cream-light: #fdfbf7;
+  --color-alpine-burgundy: #7c1c1c;
+  --color-alpine-burgundy-dark: #610c0c;
+  --color-alpine-burgundy-light: #a83a3a;
+  --color-gold-accent: #c5a059;
+  --color-forest-green: #1b4332;
+  --color-mist-grey: #9ca3af;
+  --color-glacier-blue: #e0f2fe;
+}
+
+/* Base style resets and beautiful day mode */
+body {
+  background-color: var(--color-alpine-cream);
+  color: var(--color-alpine-charcoal);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-alpine-burgundy) var(--color-alpine-cream);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-alpine-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-alpine-burgundy-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-alpine-burgundy-dark);
+}
+
+/* Custom sleek style for range sliders to replace ugly default scroll/range bar thumb */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #f1f5f9;
+  height: 8px;
+  border-radius: 9999px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #7c1c1c; /* Alpine Burgundy */
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(124, 28, 28, 0.35);
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.25);
+  background: #a83a3a; /* Alpine Burgundy Light */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #7c1c1c;
+  cursor: pointer;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(124, 28, 28, 0.35);
+  transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.25);
+  background: #a83a3a;
+}
+
+/* Day-mode, badge-inspired beautiful panels */
+.alpine-glass {
+  background: rgba(253, 251, 247, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(124, 28, 28, 0.12);
+  box-shadow: 0 10px 30px -10px rgba(124, 28, 28, 0.08);
+}
+
+.alpine-glass-dark {
+  background: rgba(35, 35, 41, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(124, 28, 28, 0.25);
+  box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.35);
+  color: var(--color-alpine-cream);
+}
+
+.alpine-glass-light {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(124, 28, 28, 0.08);
+  box-shadow: 0 4px 15px -4px rgba(124, 28, 28, 0.03);
+}
+
+/* Custom badge styling details */
+.tag-badge {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  border: 1.5px solid var(--color-alpine-burgundy);
+  background: var(--color-alpine-cream-light);
+  color: var(--color-alpine-burgundy);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Campfire/flicker animation is nice for desert context */
+@keyframes flicker {
+  0%, 100% { transform: scale(1) rotate(-45deg); filter: brightness(1); }
+  30% { transform: scale(1.05) rotate(-42deg); filter: brightness(1.1); }
+  70% { transform: scale(0.95) rotate(-48deg); filter: brightness(0.95); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+@keyframes vibrate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-0.8px) rotate(-0.5deg); }
+  50% { transform: translateY(0) rotate(0.5deg); }
+  75% { transform: translateY(-0.4px) rotate(-0.2deg); }
+}
+
+.animate-vibrate {
+  animation: vibrate 0.15s infinite linear;
+}
+
+.campfire-flicker {
+  animation: flicker 0.25s infinite ease-in-out;
+}
+
+@keyframes spin-wheel {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.wheel-left {
+  transform-origin: 8px 21px;
+  transform-box: view-box;
+}
+
+.wheel-right {
+  transform-origin: 24px 21px;
+  transform-box: view-box;
+}
+
+.car-moving .wheel-left,
+.car-moving .wheel-right {
+  animation: spin-wheel 0.4s infinite linear;
+}
